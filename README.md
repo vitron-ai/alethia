@@ -6,7 +6,7 @@
 
 **45× faster than Playwright** on the localhost test loop.
 Fail-closed by default. Cryptographically chained audit packs.
-Local-first, no telemetry, no cloud, no CDP.
+**Local-first. Zero telemetry by default. Opt-in cloud.** No CDP.
 
 [![npm](https://img.shields.io/npm/v/@vitronai/alethia.svg?label=%40vitronai%2Falethia&color=1fd67f)](https://www.npmjs.com/package/@vitronai/alethia)
 [![License: MIT](https://img.shields.io/badge/MCP%20bridge-MIT-1fd67f.svg)](https://github.com/vitron-ai/alethia-mcp/blob/main/LICENSE)
@@ -31,7 +31,7 @@ Alethia is a different architectural shape. The driver and the DOM live in **the
 | DOM access | async, marshalled, race-prone | **synchronous, in-process** |
 | Per-step safety policy | none | **VITRON-EA1 fail-closed gate** |
 | Audit trail | trace viewer (debugging) | **SHA-256 chained, Ed25519 signable** |
-| Telemetry | optional cloud | **none, ever** |
+| Telemetry | on by default in cloud product | **off by default; opt-in only** |
 | Patent moat | none | **U.S. App 19/571,437** |
 
 Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evidence pack](#evidence).
@@ -64,7 +64,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
            ↓
 ┌────────────────────────┐
 │  @vitronai/alethia     │  npm package, ~9 KB, MIT, source on github
-│  stdio → HTTP shim     │  No telemetry. Loopback only.
+│  stdio → HTTP shim     │  Zero telemetry. Loopback only (enforced).
 └──────────┬─────────────┘
            │ HTTP POST 127.0.0.1:47432 (loopback only, never networked)
            ↓
@@ -178,13 +178,18 @@ VITRON-EA1 is positioned as a **publishable standard** — other automation runt
 
 ## Privacy & security
 
-Everything runs on your machine:
-- **No cloud.** Ever.
-- **No telemetry.** The bridge source ([alethia-mcp](https://github.com/vitron-ai/alethia-mcp)) is open and auditable in 5 minutes.
-- **Loopback only.** The MCP bridge only speaks to `127.0.0.1`. The desktop app's network filter blocks all non-`file://`, non-`app://`, non-`localhost` requests in production builds.
-- **Zero IPC.** No `ipcMain`/`ipcRenderer`/`contextBridge`/preload — enforced by a CI gate (`scripts/check-zero-ipc.sh` in the alethia-core repo).
+Alethia is **local-first with zero telemetry by default.** Some of these guarantees are architectural (enforced in code, not policy); others are policy commitments that hold in v0.2 and any future opt-in cloud features will be clearly disclosed.
+
+**Architectural guarantees** (enforced in code, can't drift):
+- **Loopback only.** The MCP bridge only speaks to `127.0.0.1`. The desktop runtime's production webRequest filter blocks all non-`file://`, non-`app://`, non-`localhost` requests at the network layer.
+- **Zero IPC.** No `ipcMain`/`ipcRenderer`/`contextBridge`/preload — enforced by a CI gate (`scripts/check-zero-ipc.sh`) that fails the build if any forbidden API appears.
 - **Sandboxed renderer.** `sandbox: true`, `contextIsolation: true`, `nodeIntegration: false`, `webSecurity: true`.
-- **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence).
+- **Auditable bridge.** The MIT-licensed npm bridge is ~530 lines. Read it in 5 minutes and verify it does nothing but forward MCP calls to localhost. Source: [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp).
+
+**Policy commitments** (true in v0.2; any future cloud features will be opt-in and clearly disclosed):
+- **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere out of the box.
+- **Opt-in cloud features.** When the cloud dashboard / signed evidence service / agent observability layer ships, they will be explicit, separate, paid products you enroll in — not defaults that turn on silently.
+- **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally; any public key registry is opt-in.
 
 ---
 
@@ -211,7 +216,7 @@ Microsoft ships [Playwright MCP](https://github.com/microsoft/playwright-mcp). W
 | Avg latency per step | ~580 ms | **~13 ms** |
 | Per-step safety gate | none | **VITRON-EA1 fail-closed** |
 | Cryptographic audit | none | **SHA-256 chained, Ed25519 signable** |
-| Telemetry | Microsoft data flow | **none, loopback only** |
+| Telemetry | Microsoft data flow by default | **off by default; opt-in only** |
 | Patent moat | none | **US 19/571,437** |
 | Optimized for | cross-browser public-web QA | **agent loops on localhost dev servers** |
 
