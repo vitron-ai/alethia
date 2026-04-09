@@ -40,16 +40,18 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 
 ## Status
 
-**Alethia is in design-partner alpha (v0.2.0) as of April 2026.**
+**Alethia v0.3.0 is shipping as of April 2026.**
 
-- ✅ **MCP bridge published** to npm: [`@vitronai/alethia`](https://www.npmjs.com/package/@vitronai/alethia)
+- ✅ **MCP bridge v0.3.0** on npm: [`@vitronai/alethia`](https://www.npmjs.com/package/@vitronai/alethia) — auto-installs the headless runtime on first call
 - ✅ **MCP bridge source** open and auditable: [vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp) — MIT
+- ✅ **Cross-platform headless binaries**: macOS x64/arm64, Linux x64/arm64, Windows x64 — [GitHub Releases](https://github.com/vitron-ai/alethia/releases)
+- ✅ **Ed25519-signed releases**: every binary is signature-verified before extraction
 - ✅ **Patent filed**: U.S. Patent Application No. 19/571,437 (non-provisional, claiming priority to 63/785,814 filed April 9, 2025)
-- ⏳ **Public binary releases** of the desktop runtime — coming with the design partner wave
-- ⏳ **Headless mode** for unattended CI agents — v0.3 milestone
-- ⏳ **Cloud dashboard** (signed evidence as a service, team collaboration) — post-MVP
+- ✅ **Headless mode**: agent-driven spawning with `--headless`, no visible window
+- ⏳ **Public evaluation binary** (full desktop app under 60-day eval license) — coming soon
+- ⏳ **Cloud dashboard** (signed evidence as a service, team collaboration) — post-eval
 
-**If you build AI coding agents and want early access to the desktop runtime**, email **gatekeeper@vitron.ai**. Design partner program is open and free during the alpha.
+**One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For design-partner access or licensing, email **gatekeeper@vitron.ai**.
 
 ---
 
