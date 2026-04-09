@@ -11,7 +11,8 @@ Fail-closed by default. Cryptographically chained audit packs.
 [![npm](https://img.shields.io/npm/v/@vitronai/alethia.svg?label=%40vitronai%2Falethia&color=1fd67f)](https://www.npmjs.com/package/@vitronai/alethia)
 [![License: MIT](https://img.shields.io/badge/MCP%20bridge-MIT-1fd67f.svg)](https://github.com/vitron-ai/alethia-mcp/blob/main/LICENSE)
 [![Patent Pending](https://img.shields.io/badge/Patent-Pending-5fb4f7.svg)](#patent-notice)
-[![Status](https://img.shields.io/badge/status-design%20partner%20alpha-e8a020.svg)](#status)
+[![Status](https://img.shields.io/badge/status-v0.3%20shipped-1fd67f.svg)](#status)
+[![Tessl](https://img.shields.io/badge/Tessl-Registry-5fb4f7.svg)](https://tessl.io/registry/vitron-ai/alethia)
 
 </div>
 
@@ -65,8 +66,8 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
            │ stdio (newline-delimited JSON-RPC)
            ↓
 ┌────────────────────────┐
-│  @vitronai/alethia     │  npm package, ~9 KB, MIT, source on github
-│  stdio → HTTP shim     │  Zero telemetry. Loopback only (enforced).
+│  @vitronai/alethia     │  npm package, ~22 KB, MIT, source on github
+│  stdio → HTTP shim     │  Auto-installs runtime on first call. Loopback only.
 └──────────┬─────────────┘
            │ HTTP POST 127.0.0.1:47432 (loopback only, never networked)
            ↓
@@ -93,23 +94,19 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 
 ## Try it
 
-> ⚠️ **Design-partner alpha.** The desktop runtime is required and is currently distributed by request. Email **gatekeeper@vitron.ai** for early access. Public binary releases are coming with the v0.3 milestone.
-
-### 1. Install the MCP bridge from npm (live now)
+### 1. Install
 
 ```bash
 npm install -g @vitronai/alethia
 ```
 
-### 2. Verify install
+That's it. The bridge auto-downloads the signed headless runtime on first use — Ed25519 verified, SHA-256 checked, no signup required.
+
+### 2. Verify
 
 ```bash
-alethia-mcp --version
-alethia-mcp --help
 alethia-mcp --health-check
 ```
-
-The health check will tell you the desktop runtime isn't reachable yet — that's expected if you don't have the binary. Once you do, it'll print:
 
 ```
 ✓ Connected. 5 MCP tools available.
@@ -120,7 +117,7 @@ The health check will tell you the desktop runtime isn't reachable yet — that'
 
 ### 3. Configure your agent
 
-#### Claude Code (`~/.claude/mcp.json`)
+Add to your MCP config (`.mcp.json`, Claude Code settings, Cursor MCP, Cline, etc.):
 
 ```json
 {
@@ -130,21 +127,11 @@ The health check will tell you the desktop runtime isn't reachable yet — that'
 }
 ```
 
-#### Cursor (Settings → MCP → Add server)
-
-```json
-{ "alethia": { "command": "alethia-mcp" } }
-```
-
-#### Cline / Continue / any MCP-compatible client
-
-Same shape. They all speak the standard stdio MCP protocol.
-
 ### 4. Drive Alethia from your agent
 
-> *"Use alethia_tell to navigate to localhost:3000, sign in as admin@example.com / password123, and verify the dashboard heading is visible."*
+> *"Use alethia_tell to navigate to file:///path/to/app.html, type test@example.com into the email field, click Sign In, and assert the dashboard is visible."*
 
-The agent will call `alethia_tell` with that NLP. Alethia compiles it to Action IR, runs it through the VITRON-EA1 policy gate (default: `controlled-web`, fail-closed), executes step-by-step with synchronous DOM access, and returns a signed `PlanRun` with per-step results, policy audit records, and a SHA-256 integrity hash.
+The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, runs it through the VITRON-EA1 policy gate (default: `controlled-web`, fail-closed), executes step-by-step with synchronous DOM access, and returns a signed `PlanRun` with per-step results, policy audit records, and a SHA-256 integrity hash.
 
 ---
 
@@ -186,9 +173,9 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 - **Loopback only.** The MCP bridge only speaks to `127.0.0.1`. The desktop runtime's production webRequest filter blocks all non-`file://`, non-`app://`, non-`localhost` requests at the network layer.
 - **Zero IPC.** No `ipcMain`/`ipcRenderer`/`contextBridge`/preload — enforced by a CI gate (`scripts/check-zero-ipc.sh`) that fails the build if any forbidden API appears.
 - **Sandboxed renderer.** `sandbox: true`, `contextIsolation: true`, `nodeIntegration: false`, `webSecurity: true`.
-- **Auditable bridge.** The MIT-licensed npm bridge is ~530 lines. Read it in 5 minutes and verify it does nothing but forward MCP calls to localhost. Source: [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp).
+- **Auditable bridge.** The MIT-licensed npm bridge is readable in minutes. It does nothing but forward MCP calls to localhost and (in v0.3) auto-download the signed runtime. Source: [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp).
 
-**Policy commitments** (true in v0.2; any future cloud features will be opt-in and clearly disclosed):
+**Policy commitments** (true in v0.3; any future cloud features will be opt-in and clearly disclosed):
 - **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere out of the box.
 - **Opt-in cloud features.** When the cloud dashboard / signed evidence service / agent observability layer ships, they will be explicit, separate, paid products you enroll in — not defaults that turn on silently.
 - **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally; any public key registry is opt-in.
@@ -200,11 +187,9 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 The performance, safety, and patent claims are backed by reproducible evidence:
 
 - **Benchmarks:** `click-assert-wait` against Playwright, Puppeteer, Selenium, Cypress, TestCafe, Taiko. Latest results show Alethia at 12.9 ms avg, Playwright at 580.7 ms avg.
-- **Validation suite:** 12 jsdom-based test cases (6 runtime + 6 SDK contract) covering parser, policy, executor, kill switch, integrity hashing.
-- **Signed evidence packs:** Ed25519-signed canonical manifests via `npm run evidence:keygen` + `npm run evidence:pack` (in the closed alethia-core repo).
+- **Validation suite:** 12 jsdom-based unit tests + 13 integration tests against the live runtime covering navigation, assertions, typing, policy gate, integrity hashing, and the full dogfood flow.
+- **Signed releases:** Ed25519-signed release manifests with per-artifact SHA-256 hashes. Verification happens automatically during auto-install.
 - **Patent filing:** U.S. Patent Application No. 19/571,437 (non-provisional, in examiner queue), claiming priority to 63/785,814 filed April 9, 2025.
-
-Design partners get access to the full alethia-core repo (including benchmarks, evidence pipeline, and patent docs).
 
 ---
 
@@ -247,9 +232,12 @@ For licensing inquiries: **gatekeeper@vitron.ai**
 
 ## Links
 
-- 📦 **npm package:** [npmjs.com/package/@vitronai/alethia](https://www.npmjs.com/package/@vitronai/alethia)
-- 💾 **MCP bridge source (MIT):** [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp)
-- 📧 **Design partner program / licensing:** gatekeeper@vitron.ai
+- 📦 **npm:** [npmjs.com/package/@vitronai/alethia](https://www.npmjs.com/package/@vitronai/alethia)
+- 💾 **Bridge source (MIT):** [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp)
+- 📋 **Tessl Registry:** [tessl.io/registry/vitron-ai/alethia](https://tessl.io/registry/vitron-ai/alethia)
+- 📦 **Releases:** [github.com/vitron-ai/alethia/releases](https://github.com/vitron-ai/alethia/releases)
+- 🌐 **Website:** [vitron.ai](https://vitron.ai)
+- 📧 **Licensing:** gatekeeper@vitron.ai
 - 🏛 **Patent (USPTO):** Application No. 19/571,437
 
 ---
