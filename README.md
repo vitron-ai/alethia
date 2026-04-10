@@ -41,9 +41,9 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 
 ## Status
 
-**Alethia v0.3.0 is shipping as of April 2026.**
+**Alethia v0.3 is shipping as of April 2026.**
 
-- ✅ **MCP bridge v0.3.0** on npm: [`@vitronai/alethia`](https://www.npmjs.com/package/@vitronai/alethia) — auto-installs the headless runtime on first call
+- ✅ **MCP bridge** on npm: [`@vitronai/alethia`](https://www.npmjs.com/package/@vitronai/alethia) — auto-installs the headless runtime on first call
 - ✅ **MCP bridge source** open and auditable: [vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp) — MIT
 - ✅ **Cross-platform headless binaries**: macOS x64/arm64, Linux x64/arm64, Windows x64 — [GitHub Releases](https://github.com/vitron-ai/alethia/releases)
 - ✅ **Ed25519-signed releases**: every binary is signature-verified before extraction
