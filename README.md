@@ -109,7 +109,7 @@ alethia-mcp --health-check
 ```
 
 ```
-✓ Connected. 7 MCP tools available.
+✓ Connected. MCP tools available.
   runtime version:  0.1.0-alpha.1
   default profile:  controlled-web
   kill switch:      inactive
