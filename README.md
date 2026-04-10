@@ -135,7 +135,7 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 
 ---
 
-## The 7 MCP tools
+## MCP tools
 
 | Tool | Purpose |
 |---|---|
