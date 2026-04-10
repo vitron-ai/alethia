@@ -72,13 +72,13 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
            │ HTTP POST 127.0.0.1:47432 (loopback only, never networked)
            ↓
 ┌────────────────────────┐
-│  Alethia desktop app   │  Electron main process — proprietary, patent pending
+│  Alethia desktop app   │  Desktop runtime — proprietary, patent pending
 │  local JSON-RPC server │  Loopback bind, never reachable from network
 └──────────┬─────────────┘
-           │ webContents.executeJavaScript('window.__alethia.tell(...)')
+           │ in-process JS bridge
            ↓
 ┌────────────────────────┐
-│  Alethia renderer      │  Electron renderer — IS the browser
+│  Alethia renderer      │  Embedded browser — IS the browser
 │  zero-IPC runtime      │  tell() → NLP compiler → Action IR
 └──────────┬─────────────┘  VITRON-EA1 policy gate (per-step, fail-closed)
            │ direct synchronous DOM access
@@ -88,7 +88,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 └────────────────────────┘
 ```
 
-**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ Electron). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference that makes Alethia 45× faster than Playwright on the localhost test loop.
+**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ desktop app). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference that makes Alethia 45× faster than Playwright on the localhost test loop.
 
 ---
 
@@ -171,8 +171,8 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 
 **Architectural guarantees** (enforced in code, can't drift):
 - **Loopback only.** The MCP bridge only speaks to `127.0.0.1`. The desktop runtime's production webRequest filter blocks all non-`file://`, non-`app://`, non-`localhost` requests at the network layer.
-- **Zero IPC.** No `ipcMain`/`ipcRenderer`/`contextBridge`/preload — enforced by a CI gate (`scripts/check-zero-ipc.sh`) that fails the build if any forbidden API appears.
-- **Sandboxed renderer.** `sandbox: true`, `contextIsolation: true`, `nodeIntegration: false`, `webSecurity: true`.
+- **Zero IPC.** No inter-process communication between driver and DOM — enforced by a CI gate (`scripts/check-zero-ipc.sh`) that fails the build if any forbidden API appears.
+- **Sandboxed renderer.** The embedded browser runs in a locked-down sandbox with context isolation, no Node access, and full web security enabled.
 - **Auditable bridge.** The MIT-licensed npm bridge is readable in minutes. It does nothing but forward MCP calls to localhost and (in v0.3) auto-download the signed runtime. Source: [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp).
 
 **Policy commitments** (true in v0.3; any future cloud features will be opt-in and clearly disclosed):
