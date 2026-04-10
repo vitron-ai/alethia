@@ -49,7 +49,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 - ✅ **Ed25519-signed releases**: every binary is signature-verified before extraction
 - ✅ **Patent filed**: U.S. Patent Application No. 19/571,437 (non-provisional, claiming priority to 63/785,814 filed April 9, 2025)
 - ✅ **Headless mode**: agent-driven spawning with `--headless`, no visible window
-- ⏳ **Public evaluation binary** (full desktop app under 60-day eval license) — coming soon
+- ⏳ **Public evaluation binary** (full runtime under 60-day eval license) — coming soon
 - ⏳ **Cloud dashboard** (signed evidence as a service, team collaboration) — post-eval
 
 **One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For design-partner access or licensing, email **gatekeeper@vitron.ai**.
@@ -72,7 +72,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
            │ HTTP POST 127.0.0.1:47432 (loopback only, never networked)
            ↓
 ┌────────────────────────┐
-│  Alethia desktop app   │  Desktop runtime — proprietary, patent pending
+│  Alethia runtime       │  Desktop runtime — proprietary, patent pending
 │  local JSON-RPC server │  Loopback bind, never reachable from network
 └──────────┬─────────────┘
            │ in-process JS bridge
