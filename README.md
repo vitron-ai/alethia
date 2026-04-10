@@ -109,7 +109,7 @@ alethia-mcp --health-check
 ```
 
 ```
-✓ Connected. 5 MCP tools available.
+✓ Connected. 7 MCP tools available.
   runtime version:  0.1.0-alpha.1
   default profile:  controlled-web
   kill switch:      inactive
@@ -135,7 +135,7 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 
 ---
 
-## The 5 MCP tools
+## The 7 MCP tools
 
 | Tool | Purpose |
 |---|---|
@@ -144,6 +144,8 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 | `alethia_status` | Health + identity probe. Version, profile, kill switch state, driver stats. |
 | `alethia_activate_kill_switch` | Halt all automation immediately. Optional reason logged in audit trail. |
 | `alethia_reset_kill_switch` | Clear an active kill switch. Re-enables `tell()` calls. |
+| `alethia_screenshot` | Capture a PNG screenshot of the current page. Visual verification for agent loops. |
+| `alethia_eval` | Evaluate a JS expression in the page under test. Escape hatch for raw DOM queries. |
 
 Full docs: [npmjs.com/package/@vitronai/alethia](https://www.npmjs.com/package/@vitronai/alethia)
 
