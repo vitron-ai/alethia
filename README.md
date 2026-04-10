@@ -52,7 +52,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 - ⏳ **Public evaluation binary** (full runtime under 60-day eval license) — coming soon
 - ⏳ **Cloud dashboard** (signed evidence as a service, team collaboration) — post-eval
 
-**One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For design-partner access or licensing, email **gatekeeper@vitron.ai**.
+**One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For licensing inquiries, email **gatekeeper@vitron.ai**.
 
 ---
 
@@ -88,7 +88,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 └────────────────────────┘
 ```
 
-**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ desktop app). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference that makes Alethia 45× faster than Playwright on the localhost test loop.
+**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ runtime). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference that makes Alethia 45× faster than Playwright on the localhost test loop.
 
 ---
 
