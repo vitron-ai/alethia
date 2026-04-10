@@ -8,11 +8,11 @@
 Fail-closed by default. Cryptographically chained audit packs.
 **Local-first. Zero telemetry by default. Opt-in cloud.** No CDP.
 
-[![npm](https://img.shields.io/npm/v/@vitronai/alethia.svg?label=%40vitronai%2Falethia&color=1fd67f)](https://www.npmjs.com/package/@vitronai/alethia)
-[![License: MIT](https://img.shields.io/badge/MCP%20bridge-MIT-1fd67f.svg)](https://github.com/vitron-ai/alethia-mcp/blob/main/LICENSE)
-[![Patent Pending](https://img.shields.io/badge/Patent-Pending-5fb4f7.svg)](#patent-notice)
-[![Status](https://img.shields.io/badge/status-v0.3%20shipped-1fd67f.svg)](#status)
-[![Tessl](https://img.shields.io/badge/Tessl-Registry-5fb4f7.svg)](https://tessl.io/registry/vitron-ai/alethia)
+[![npm](https://img.shields.io/npm/v/@vitronai/alethia.svg?label=%40vitronai%2Falethia&color=1fd67f&logo=npm&logoColor=white)](https://www.npmjs.com/package/@vitronai/alethia)
+[![License: MIT](https://img.shields.io/badge/MCP%20bridge-MIT-1fd67f.svg?logo=opensourceinitiative&logoColor=white)](https://github.com/vitron-ai/alethia-mcp/blob/main/LICENSE)
+[![Patent Pending](https://img.shields.io/badge/Patent-Pending-5fb4f7.svg?logo=shield&logoColor=white)](#patent-notice)
+[![Status](https://img.shields.io/badge/status-v0.3%20shipped-1fd67f.svg?logo=checkmarx&logoColor=white)](#status)
+[![Tessl](https://img.shields.io/badge/Tessl-Registry-5fb4f7.svg?logo=data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjUgMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuODcgMTIuMjJjMC0uMjUuMjctLjQxLjQ5LS4yOGw0LjQ0IDIuNTd2NS43OGMwIDEuMDEgMS4xIDEuNjMgMS45NiAxLjEybDQuMjYtMi41NHY2LjMybC00LjI3IDIuNDdjLS44MS40Ny0xLjguNDctMi42IDBsLTQuMjgtMi40N1YxMi4yMloiIGZpbGw9IndoaXRlIi8+PC9zdmc+)](https://tessl.io/registry/vitron-ai/alethia)
 
 </div>
 
