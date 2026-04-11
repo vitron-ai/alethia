@@ -148,6 +148,8 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 | `alethia_eval` | Evaluate a JS expression in the page under test. Escape hatch for raw DOM queries. |
 | `alethia_audit_wcag` | WCAG 2.1 AA accessibility audit — 14 criteria. Section 508 compliance. |
 | `alethia_audit_nist` | NIST SP 800-53 security controls audit — 8 controls across AC, IA, SI families. |
+| `alethia_export_session` | Export signed evidence pack of the entire agent session — SHA-256 hashed. |
+| `alethia_tell_parallel` | Run multiple test flows concurrently against different URLs. |
 
 Full docs: [npmjs.com/package/@vitronai/alethia](https://www.npmjs.com/package/@vitronai/alethia)
 
