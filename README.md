@@ -6,7 +6,7 @@
 
 **45× faster than Playwright** on the localhost test loop.
 Fail-closed by default. Cryptographically chained audit packs.
-**Local-first. Zero telemetry by default. Opt-in cloud.** No CDP.
+**Local-first. Zero telemetry by default. Air-gap ready.** No CDP.
 
 [![npm](https://img.shields.io/npm/v/@vitronai/alethia.svg?label=%40vitronai%2Falethia&color=1fd67f&logo=npm&logoColor=white)](https://www.npmjs.com/package/@vitronai/alethia)
 [![License: MIT](https://img.shields.io/badge/MCP%20bridge-MIT-1fd67f.svg?logo=opensourceinitiative&logoColor=white)](https://github.com/vitron-ai/alethia-mcp/blob/main/LICENSE)
@@ -50,7 +50,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 - ✅ **Patent filed**: U.S. Patent Application No. 19/571,437 (non-provisional, claiming priority to 63/785,814 filed April 9, 2025)
 - ✅ **Headless mode**: agent-driven spawning with `--headless`, no visible window
 - ⏳ **Public evaluation binary** (full runtime under 60-day eval license) — coming soon
-- ⏳ **Cloud dashboard** (signed evidence as a service, team collaboration) — post-eval
+- ⏳ **Partnership opportunities** — looking for the right partner to bring Alethia to enterprise and defense at scale
 
 **One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For licensing inquiries, email **gatekeeper@vitron.ai**.
 
@@ -171,7 +171,7 @@ VITRON-EA1 is positioned as a **publishable standard** — other automation runt
 
 ## Privacy & security
 
-Alethia is **local-first with zero telemetry by default.** Some of these guarantees are architectural (enforced in code, not policy); others are policy commitments that hold in v0.2 and any future opt-in cloud features will be clearly disclosed.
+Alethia is **local-first with zero telemetry by default.** Some of these guarantees are architectural (enforced in code, not policy); others are policy commitments.
 
 **Architectural guarantees** (enforced in code, can't drift):
 - **Loopback only.** The MCP bridge only speaks to `127.0.0.1`. The desktop runtime's production webRequest filter blocks all non-`file://`, non-`app://`, non-`localhost` requests at the network layer.
@@ -179,9 +179,9 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 - **Sandboxed renderer.** The embedded browser runs in a locked-down sandbox with context isolation, no Node access, and full web security enabled.
 - **Auditable bridge.** The MIT-licensed npm bridge is readable in minutes. It does nothing but forward MCP calls to localhost and (in v0.3) auto-download the signed runtime. Source: [github.com/vitron-ai/alethia-mcp](https://github.com/vitron-ai/alethia-mcp).
 
-**Policy commitments** (true in v0.3; any future cloud features will be opt-in and clearly disclosed):
-- **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere out of the box.
-- **Opt-in cloud features.** When the cloud dashboard / signed evidence service / agent observability layer ships, they will be explicit, separate, paid products you enroll in — not defaults that turn on silently.
+**Policy commitments:**
+- **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere.
+- **No cloud dependency.** Alethia is architecturally local-first. There is no cloud product, no SaaS layer, no hosted service. Everything runs on your machine.
 - **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally; any public key registry is opt-in.
 
 ---
