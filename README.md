@@ -32,7 +32,7 @@ Alethia is a different architectural shape. The driver and the DOM live in **the
 | DOM access | async, marshalled, race-prone | **synchronous, in-process** |
 | Per-step safety policy | none | **VITRON-EA1 fail-closed gate** |
 | Audit trail | trace viewer (debugging) | **SHA-256 chained, Ed25519 signable** |
-| Telemetry | on by default in cloud product | **off by default; opt-in only** |
+| Telemetry | on by default in cloud product | **zero — no telemetry, no opt-in, no phone home** |
 | Patent moat | none | **U.S. App 19/571,437** |
 
 Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evidence pack](#evidence).
@@ -184,7 +184,7 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 **Policy commitments:**
 - **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere.
 - **No cloud dependency.** Alethia is architecturally local-first. There is no cloud product, no SaaS layer, no hosted service. Everything runs on your machine.
-- **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally; any public key registry is opt-in.
+- **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally.
 
 ---
 
@@ -209,7 +209,7 @@ Microsoft ships [Playwright MCP](https://github.com/microsoft/playwright-mcp). W
 | Avg latency per step | ~580 ms | **~13 ms** |
 | Per-step safety gate | none | **VITRON-EA1 fail-closed** |
 | Cryptographic audit | none | **SHA-256 chained, Ed25519 signable** |
-| Telemetry | Microsoft data flow by default | **off by default; opt-in only** |
+| Telemetry | Microsoft data flow by default | **zero — no telemetry, no opt-in, no phone home** |
 | Patent moat | none | **US 19/571,437** |
 | Optimized for | cross-browser public-web QA | **agent loops on localhost dev servers** |
 
@@ -217,7 +217,7 @@ Microsoft ships [Playwright MCP](https://github.com/microsoft/playwright-mcp). W
 
 **Use Alethia for** AI agents driving localhost dev servers in tight decide-act-verify loops where every millisecond and every fail-closed guardrail matters.
 
-The two tools serve different jobs. Playwright will not catch up on the agent-loop wedge because closing the gap would require abandoning their cross-browser story (they'd have to become an in-process, Chromium-only runtime — i.e. become Alethia).
+The two tools serve different jobs. Playwright will not catch up on the agent-loop wedge because closing the gap would require abandoning their cross-browser architecture for an in-process, zero-IPC execution model.
 
 ---
 
