@@ -102,17 +102,19 @@ Every `alethia_tell` call returns:
 Alethia ships with demo apps you can drive immediately. Paste this into Claude Code:
 
 ```
-Use alethia_serve_demo to start the demo server. Tell me the URL
-for claude-code-app.html so I can open it in the preview panel.
-Then use alethia_tell to navigate to that URL. Assert "TaskFlow"
-is visible. Type dev@company.com into the "you@company.com" field.
-Type Engineering into the "Your team name" field. Click Sign in.
-Assert "Signed in as" is visible. Type "Deploy to production" into
-the "Add a new task" field. Click Add. Assert "Deploy to production"
-is visible. Click Delete and report what EA1 decides.
+Use alethia_serve_demo to start the demo server. Then use
+alethia_tell to navigate to the claude-code-app URL. Assert
+"TaskFlow" is visible. Type dev@company.com into the
+"you@company.com" field. Type Engineering into the "Your team
+name" field. Click Sign in. Assert "Signed in as" is visible.
+Type "Deploy to production" into the "Add a new task" field.
+Click Add. Assert "Deploy to production" is visible. Click
+Delete and report what EA1 decides.
 ```
 
-The agent starts a localhost server, gives you the URL to open in the preview panel, then drives the app. Watch clicks and form fills happen live as EA1 blocks the delete.
+The agent starts a localhost server, drives the app with plain English, and EA1 blocks the delete.
+
+**Watch it live:** Add `"env": { "ALETHIA_VISIBLE": "1" }` to your MCP config to open the Alethia browser window and see it happen in real time.
 
 ---
 
