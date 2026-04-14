@@ -97,6 +97,25 @@ Every `alethia_tell` call returns:
 
 ---
 
+## Try the built-in demo
+
+Alethia ships with demo apps you can drive immediately. Paste this into Claude Code:
+
+```
+Use alethia_serve_demo to start the demo server.
+Then use alethia_tell to navigate to the claude-code-app page.
+Assert "TaskFlow" is visible. Type dev@company.com into the
+"you@company.com" field. Type Engineering into the "Your team
+name" field. Click Sign in. Assert "Signed in as" is visible.
+Type "Deploy to production" into the "Add a new task" field.
+Click Add. Assert "Deploy to production" is visible.
+Click Delete and report what EA1 decides.
+```
+
+The agent serves a task manager on localhost, drives it with plain English, and EA1 blocks the delete. In Claude Code, open the localhost URL in the preview panel to watch it live.
+
+---
+
 ## How is this different from Playwright?
 
 Playwright is built for humans writing test scripts against public websites. Alethia is built for AI agents verifying apps on localhost.
