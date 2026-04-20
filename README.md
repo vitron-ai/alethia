@@ -114,7 +114,7 @@ Delete and report what EA1 decides.
 
 The agent starts a localhost server, drives the app with plain English, and EA1 blocks the delete.
 
-**Watch it live:** Add `"env": { "ALETHIA_VISIBLE": "1" }` to your MCP config to open the Alethia browser window and see it happen in real time.
+**Watch it live:** The Alethia cockpit opens by default — you'll see each step highlighted on-screen (green = pass, blue = type, red = EA1 block). Set `ALETHIA_HEADLESS=1` to run without a visible window (recommended for CI; auto-detected in common CI environments).
 
 ---
 
