@@ -111,7 +111,7 @@ alethia-mcp --health-check
 ```
 ✓ Connected. MCP tools available.
   runtime version:  <current — whatever GitHub Releases serves>
-  default profile:  controlled-web
+  default profile:  local-only
   kill switch:      inactive
 ```
 
