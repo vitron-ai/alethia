@@ -51,7 +51,7 @@ Add to your MCP config (Claude Code, Cursor, Cline, etc.):
 ```json
 {
   "mcpServers": {
-    "alethia": { "command": "npx", "args": ["-y", "@vitronai/alethia"] }
+    "alethia": { "command": "alethia-mcp" }
   }
 }
 ```

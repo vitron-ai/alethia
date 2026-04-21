@@ -122,7 +122,7 @@ Add to your MCP config (`.mcp.json`, Claude Code settings, Cursor MCP, Cline, et
 ```json
 {
   "mcpServers": {
-    "alethia": { "command": "npx", "args": ["-y", "@vitronai/alethia"] }
+    "alethia": { "command": "alethia-mcp" }
   }
 }
 ```
