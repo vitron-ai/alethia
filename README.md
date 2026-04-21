@@ -36,7 +36,19 @@ Alethia makes it happen — in a real browser, on your machine, in milliseconds.
 
 ## Get started
 
-### 1. Install
+### Claude Code users — one curl, Claude handles the rest
+
+```bash
+mkdir -p ~/.claude/skills/alethia && \
+  curl -fsSL https://raw.githubusercontent.com/vitron-ai/alethia-mcp/main/skills/alethia/SKILL.md \
+    -o ~/.claude/skills/alethia/SKILL.md
+```
+
+Restart Claude Code. Ask it to test a page or audit a site — Claude notices the tools aren't installed yet and walks you through the bridge install with verbatim commands. The skill bootstraps itself.
+
+### Everyone else — two commands
+
+**1. Install the bridge:**
 
 ```bash
 npm install -g @vitronai/alethia
@@ -44,9 +56,7 @@ npm install -g @vitronai/alethia
 
 The runtime auto-downloads on first use. Signed and verified. No signup.
 
-### 2. Add to your AI agent
-
-Add to your MCP config (Claude Code, Cursor, Cline, etc.):
+**2. Add to your MCP config** (Claude Desktop, Cursor, Cline, etc.):
 
 ```json
 {
@@ -56,7 +66,7 @@ Add to your MCP config (Claude Code, Cursor, Cline, etc.):
 }
 ```
 
-### 3. Go
+### Then go
 
 Ask your agent to test something. It calls `alethia_tell` under the hood:
 
