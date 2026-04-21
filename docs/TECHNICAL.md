@@ -183,7 +183,7 @@ Alethia is **local-first with zero telemetry by default.** Some of these guarant
 
 **Policy commitments:**
 - **Zero telemetry collection by default.** The runtime does not phone home, does not collect usage metrics, does not report crashes anywhere.
-- **No cloud dependency.** Alethia is architecturally local-first. There is no cloud product, no SaaS layer, no hosted service. Everything runs on your machine.
+- **Local-first by architecture.** The runtime executes on your machine; published builds have no cloud dependency by default. Partner-specific production-origin access is handled by custom-signed desktop builds — the runtime itself is never a cloud product.
 - **Cryptographically signed evidence packs.** Ed25519 keypair + canonical SHA-256 manifest. See [Evidence](#evidence). Signing happens locally.
 
 ---
