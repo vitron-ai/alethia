@@ -110,7 +110,7 @@ alethia-mcp --health-check
 
 ```
 ✓ Connected. MCP tools available.
-  runtime version:  0.1.0-alpha.4
+  runtime version:  <current — whatever GitHub Releases serves>
   default profile:  controlled-web
   kill switch:      inactive
 ```
