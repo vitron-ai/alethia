@@ -51,7 +51,7 @@ Add to your MCP config (Claude Code, Cursor, Cline, etc.):
 ```json
 {
   "mcpServers": {
-    "alethia": { "command": "alethia-mcp" }
+    "alethia": { "command": "npx", "args": ["-y", "@vitronai/alethia"] }
   }
 }
 ```
@@ -144,7 +144,8 @@ They solve different problems. [Full technical comparison](docs/TECHNICAL.md#com
 
 ## Go deeper
 
-- [Agent cookbook](docs/agent-cookbook.md) — paste-ready prompts for full demos (smoke tests, compliance audits, parallel checks, EA1 safety proofs, partner walkthroughs)
+- [Agent cookbook](https://github.com/vitron-ai/alethia-mcp/blob/main/docs/agent-cookbook.md) — paste-ready prompts for full demos (smoke tests, compliance audits, parallel checks, EA1 safety proofs, partner walkthroughs)
+- [UI for agents](https://github.com/vitron-ai/alethia-mcp/blob/main/docs/ui-for-agents.md) — designing UIs to be driven by AI: the resolver priority, when to add `data-alethia` hooks, anti-patterns from Playwright/Cypress that don't apply
 - [Technical architecture & benchmarks](docs/TECHNICAL.md) — zero-IPC design, EA1 policy spec, evidence packs, patent details
 - [MCP bridge source (MIT)](https://github.com/vitron-ai/alethia-mcp) — auditable in minutes
 - [npm package](https://www.npmjs.com/package/@vitronai/alethia)
