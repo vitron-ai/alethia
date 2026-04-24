@@ -139,7 +139,7 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 
 | Tool | Purpose |
 |---|---|
-| `alethia_tell` | Execute natural-language test instructions. The headline tool. ~13 ms per step. |
+| `alethia_tell` | Execute natural-language test instructions. The headline tool. ~40 ms per call (compact mode, 0.5.0 default). |
 | `alethia_compile` | Compile NL → Action IR without executing. Preview before you run. |
 | `alethia_status` | Health + identity probe. Version, profile, kill switch state, driver stats. |
 | `alethia_activate_kill_switch` | Halt all automation immediately. Optional reason logged in audit trail. |
@@ -205,8 +205,9 @@ Microsoft ships [Playwright MCP](https://github.com/microsoft/playwright-mcp). W
 
 | | Playwright MCP | Alethia |
 |---|---|---|
-| Architecture | CDP marshalling, async-by-construction | Zero-IPC, synchronous |
-| Avg latency per step | ~580 ms | **~13 ms** |
+| Architecture | CDP round-trip per action | Zero-IPC, same JS VM as DOM |
+| Avg per-call latency | ~200 ms | **~40 ms** |
+| Per-flow token cost (crud) | ~3,175 tokens | **~380 tokens** (8.5× fewer) |
 | Per-step safety gate | none | **VITRON-EA1 fail-closed** |
 | Cryptographic audit | none | **SHA-256 chained, Ed25519 signable** |
 | Telemetry | Microsoft data flow by default | **zero — no telemetry, no opt-in, no phone home** |
