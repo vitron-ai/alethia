@@ -28,7 +28,7 @@ Alethia makes it happen — in a real browser, on your machine, in milliseconds.
 
 ## Three things that matter
 
-- **Fast.** ~13 ms per step. 45x faster than Playwright. Your agent can test as fast as it can think.
+- **Fast.** ~40 ms per tool call. 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. [Reproduce the numbers yourself.](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md)
 - **Safe.** Destructive actions (delete, purchase, transfer) are blocked by default. Your agent can't accidentally nuke prod data.
 - **Private.** Runs entirely on your machine. No cloud. No telemetry. No data leaves localhost.
 
@@ -132,13 +132,14 @@ The agent starts a localhost server, drives the app with plain English, and EA1 
 
 Playwright is built for humans writing test scripts against public websites. Alethia is built for AI agents verifying apps on localhost.
 
-| | Playwright | Alethia |
-|---|---|---|
-| Who writes the tests | Humans, in JavaScript | AI agents, in plain English |
-| Speed per step | ~580 ms | **~13 ms** |
-| Safety guardrails | None built in | **Blocked by default for destructive actions** |
-| Telemetry | On by default | **None** |
-| Optimized for | Cross-browser QA | **Agent-driven localhost verification** |
+| | Playwright CLI | Playwright MCP | Alethia |
+|---|---|---|---|
+| Who writes the tests | Humans, in JavaScript | An agent, via MCP | An agent, in plain English |
+| Speed per call | ~2 s (process + browser respawn) | ~200 ms | **~40 ms** |
+| Safety guardrails | None built in | None built in | **Fail-closed EA1 gate on destructive actions** |
+| Signed evidence packs | No | No | **Yes** |
+| Telemetry | On by default | Local-only | **None** |
+| Optimized for | Human-written CI suites | General agent automation | **Agent-driven localhost verification** |
 
 They solve different problems. [Full technical comparison](docs/TECHNICAL.md#comparison-to-playwright-mcp)
 

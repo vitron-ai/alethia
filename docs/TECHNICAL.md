@@ -4,7 +4,7 @@
 
 **The patent-pending zero-IPC E2E test runtime built for AI agents.**
 
-**45× faster than Playwright** on the localhost test loop.
+**~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows** ([reproduce the numbers](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md)).
 Fail-closed by default. Cryptographically chained audit packs.
 **Local-first. Zero telemetry by default. Air-gap ready.** No CDP.
 
@@ -88,7 +88,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 └────────────────────────┘
 ```
 
-**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ runtime). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference that makes Alethia 45× faster than Playwright on the localhost test loop.
+**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ runtime). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference. In practice: ~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. Playwright MCP still pays a CDP round-trip on every action; Alethia avoids the round-trip entirely.
 
 ---
 
