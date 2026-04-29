@@ -28,7 +28,7 @@ Alethia makes it happen — in a real browser, on your machine, in milliseconds.
 
 ## Three things that matter
 
-- **Fast.** ~40 ms per tool call. 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. [Reproduce the numbers yourself.](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md)
+- **Fast.** ~40 ms per tool call. 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. [Reproduce the numbers yourself.](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md)
 - **Safe.** Destructive actions (delete, purchase, transfer) are blocked by default. Your agent can't accidentally nuke prod data.
 - **Private.** Runs entirely on your machine. No cloud. No telemetry. No data leaves localhost.
 
@@ -147,7 +147,7 @@ They solve different problems. [Full technical comparison](docs/TECHNICAL.md#com
 
 ## Benchmark (reproducible)
 
-Same agent, same app, same machine. GitHub Actions Ubuntu runner, N=10. All numbers reproducible via [alethia-starter](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md).
+Same agent, same app, same machine. GitHub Actions Ubuntu runner, N=10. All numbers reproducible via [alethia-anvil](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md).
 
 ### Per-flow timing
 
@@ -181,7 +181,7 @@ Alethia returns one compact response per flow. PW MCP returns an accessibility s
 
 **Alethia is 2.3× faster than Playwright CLI and 1.7× faster than Playwright MCP end-to-end** on a realistic four-flow agent session.
 
-The three-target harness, its caveats, and the install-cost methodology all live in the [reproducibility kit](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md). Clone it, run `npm install`, and generate the same numbers yourself.
+The three-target harness, its caveats, and the install-cost methodology all live in the [reproducibility kit](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md). Clone it, run `npm install`, and generate the same numbers yourself.
 
 ---
 
