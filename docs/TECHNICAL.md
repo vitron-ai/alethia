@@ -4,7 +4,7 @@
 
 **The patent-pending zero-IPC E2E test runtime built for AI agents.**
 
-**~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows** ([reproduce the numbers](https://github.com/vitron-ai/alethia-starter/blob/main/benchmark/README.md)).
+**~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows** ([reproduce the numbers](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md)).
 Fail-closed by default. Cryptographically chained audit packs.
 **Local-first. Zero telemetry by default. Air-gap ready.** No CDP.
 
