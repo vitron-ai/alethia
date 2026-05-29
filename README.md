@@ -209,7 +209,7 @@ The three-target harness, its caveats, and the install-cost methodology all live
 
 Alethia is patent pending (U.S. Application No. 19/571,437). The MIT license on the [MCP bridge](https://github.com/vitron-ai/alethia-mcp) does **not** grant a patent license for the Alethia runtime. Commercial use may require a separate license.
 
-For licensing & partnerships: **gatekeeper@vitron.ai**
+For licensing & partnerships: **team@vitron.ai**
 
 ---
 

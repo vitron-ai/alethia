@@ -52,7 +52,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 - ⏳ **Public evaluation binary** (full runtime under 60-day eval license) — coming soon
 - ⏳ **Partnership opportunities** — looking for the right partner to bring Alethia to enterprise and defense at scale
 
-**One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For licensing inquiries, email **gatekeeper@vitron.ai**.
+**One npm install. Zero manual steps.** `npm install -g @vitronai/alethia` — the bridge auto-downloads the signed headless runtime on first use. For licensing inquiries, email **team@vitron.ai**.
 
 ---
 
@@ -233,7 +233,7 @@ Alethia practices a method that is the subject of:
 
 The MIT license on the [alethia-mcp](https://github.com/vitron-ai/alethia-mcp) bridge does **not** grant any patent license under U.S. Application No. 19/571,437 or any other vitron.ai patent rights. The closed Alethia Core runtime is governed by separate terms; commercial and production use may require a patent license once granted.
 
-For licensing inquiries: **gatekeeper@vitron.ai**
+For licensing inquiries: **team@vitron.ai**
 
 ---
 
@@ -244,7 +244,7 @@ For licensing inquiries: **gatekeeper@vitron.ai**
 - 📋 **Tessl Registry:** [tessl.io/registry/vitron-ai/alethia](https://tessl.io/registry/vitron-ai/alethia)
 - 📦 **Releases:** [github.com/vitron-ai/alethia/releases](https://github.com/vitron-ai/alethia/releases)
 - 🌐 **Website:** [vitron.ai](https://vitron.ai)
-- 📧 **Licensing:** gatekeeper@vitron.ai
+- 📧 **Licensing:** team@vitron.ai
 - 🏛 **Patent (USPTO):** Application No. 19/571,437
 
 ---

@@ -14,7 +14,7 @@ The canonical Alethia security posture — threat model, cryptographic chain of 
 
 ## Reporting security issues
 
-**`gatekeeper@vitron.ai`** — do not include reproduction details in public GitHub issues. Expect acknowledgement within 72 hours.
+**`team@vitron.ai`** — do not include reproduction details in public GitHub issues. Expect acknowledgement within 72 hours.
 
 ## Reporting abuse
 
