@@ -4,7 +4,7 @@
 
 **The patent-pending zero-IPC E2E test runtime built for AI agents.**
 
-**~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows** ([reproduce the numbers](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md)).
+**~13 ms per step — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows** ([reproduce the numbers](https://github.com/vitron-ai/alethia-anvil/blob/main/benchmark/README.md)).
 Fail-closed by default. Cryptographically chained audit packs.
 **Local-first. Zero telemetry by default. Air-gap ready.** No CDP.
 
@@ -88,7 +88,7 @@ Benchmark: `click-assert-wait` scenario, 20 iterations, full numbers in the [evi
 └────────────────────────┘
 ```
 
-**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ runtime). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference. In practice: ~40 ms per tool call — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. Playwright MCP still pays a CDP round-trip on every action; Alethia avoids the round-trip entirely.
+**Two process boundaries** between your agent and the runtime (agent ↔ shim, shim ↔ runtime). Then **zero** boundaries between the runtime and the DOM. That's the architectural difference. In practice: ~13 ms per step — 2–5× faster than Playwright MCP per flow; up to 50× faster than Playwright CLI on simple flows. Playwright MCP still pays a CDP round-trip on every action; Alethia avoids the round-trip entirely.
 
 ---
 
@@ -139,7 +139,7 @@ The agent calls `alethia_tell` with that NLP. Alethia compiles it to Action IR, 
 
 | Tool | Purpose |
 |---|---|
-| `alethia_tell` | Execute natural-language test instructions. The headline tool. ~40 ms per call (compact mode, 0.5.0 default). |
+| `alethia_tell` | Execute natural-language test instructions. The headline tool. ~13 ms per step (compact mode, 0.5.0 default). |
 | `alethia_compile` | Compile NL → Action IR without executing. Preview before you run. |
 | `alethia_status` | Health + identity probe. Version, profile, kill switch state, driver stats. |
 | `alethia_activate_kill_switch` | Halt all automation immediately. Optional reason logged in audit trail. |
@@ -206,7 +206,7 @@ Microsoft ships [Playwright MCP](https://github.com/microsoft/playwright-mcp). W
 | | Playwright MCP | Alethia |
 |---|---|---|
 | Architecture | CDP round-trip per action | Zero-IPC, same JS VM as DOM |
-| Avg per-call latency | ~200 ms | **~40 ms** |
+| Avg per-step latency | ~200 ms | **~13 ms** |
 | Per-flow token cost (crud) | ~3,175 tokens | **~380 tokens** (8.5× fewer) |
 | Per-step safety gate | none | **VITRON-EA1 fail-closed** |
 | Cryptographic audit | none | **SHA-256 chained, Ed25519 signable** |
